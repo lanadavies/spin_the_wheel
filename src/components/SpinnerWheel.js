@@ -27,10 +27,10 @@ const SpinnerWheel = () => {
           <div
             key={index}
             className="wheel-segment"
-            style={{backgroundColor: item.color}}
-            // style={{
-            //   transform: `rotate(${(360 / items.length) * index}deg)`,
-            // }}
+            style={{
+                backgroundColor: item.color,
+                transform: `rotate(${(360 / items.length) * index}deg)`
+            }}
           >
             {item.name}
           </div>
