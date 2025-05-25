@@ -1,10 +1,8 @@
 import {
-  Button,
   Drawer,
   DrawerBody,
   DrawerCloseButton,
   DrawerContent,
-  DrawerFooter,
   DrawerHeader,
   DrawerOverlay,
   IconButton,
@@ -17,6 +15,7 @@ import {
 import { useContext, useRef } from "react";
 import { colorPalette, SegmentsContext } from "../SegmentContext";
 import { AddIcon, CloseIcon } from "@chakra-ui/icons";
+import './Menu.css';
 
 const Menu = () => {
   const { segments, setSegments } = useContext(SegmentsContext);
@@ -25,9 +24,7 @@ const Menu = () => {
 
   return (
     <>
-      {/* <Button ref={btnRef} colorScheme="teal" onClick={onOpen}>
-        Open
-      </Button> */}
+      <IconButton size='sm' id='menu-button' icon={<AddIcon />} ref={btnRef} colorScheme="teal" onClick={onOpen} />
       <Drawer
         isOpen={isOpen}
         placement="right"
@@ -71,7 +68,6 @@ const Menu = () => {
               ))}
               <div>
                 <IconButton
-                  colorScheme="teal"
                   onClick={() => {
                     const newSegments = [...segments];
                     newSegments.push({

@@ -15,5 +15,9 @@ h1, h2, h3, h4, h5, h6 {
 button {
   font-family: "Montserrat Alternates", sans-serif;
   color: #4d4945;
+}
 
+button.chakra-button{
+  background-color: #bad3f0;
+  color: #2574ce;
 }

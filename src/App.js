@@ -3,13 +3,13 @@ import SpinnerWheel from "./components/SpinnerWheel";
 import { ChakraProvider } from "@chakra-ui/react";
 import { SegmentsProvider } from "./SegmentContext";
 import Menu from "./components/Menu";
-import NavBar from "./components/NavBar";
+import Header from "./components/Header";
 
 function App() {
   return (
     <ChakraProvider>
       <SegmentsProvider>
-        <NavBar />
+        <Header />
         <div
           className="App"
           style={{
@@ -21,8 +21,8 @@ function App() {
           }}
         >
           <SpinnerWheel />
-          <Menu />
         </div>
+        <Menu />
       </SegmentsProvider>
     </ChakraProvider>
   );

@@ -1,0 +1,10 @@
+#menu-button{
+    position:fixed;
+    top: 5rem;
+    right: 0;
+    border-radius: 10px 0px 0px 10px;
+    background-color: #bad3f0;
+    color: #2574ce;
+    margin-right: -1px;
+    font-size: 0.8rem;
+}
