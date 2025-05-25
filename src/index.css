@@ -13,6 +13,10 @@ body {
   font-size: 0.9rem;
 }
 
+input, textarea, select {
+  background-color: #fff !important;
+}
+
 h1, h2, h3, h4, h5, h6 {
   font-family: "Montserrat Alternates", sans-serif !important;
 }
@@ -23,6 +27,6 @@ button {
 }
 
 button.chakra-button{
-  background-color: #bad3f0;
+  background-color: #c6daf1;
   color: #2574ce;
 }

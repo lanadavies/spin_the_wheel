@@ -5,7 +5,7 @@
     display: flex;
     justify-content:center;
     align-items: center;
-    background-color: #bad3f0;
+    background: linear-gradient(90deg,#C6DAF1 40%, #D3C3E9 100%);
     color: #2574ce;
     font-weight: 600;
     font-size: 0.7rem;

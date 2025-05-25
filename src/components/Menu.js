@@ -1,4 +1,5 @@
 import {
+  Badge,
   Drawer,
   DrawerBody,
   DrawerCloseButton,
@@ -9,13 +10,15 @@ import {
   Input,
   InputGroup,
   InputRightElement,
+  Select,
   Stack,
   useDisclosure,
 } from "@chakra-ui/react";
 import { useContext, useRef } from "react";
 import { colorPalette, SegmentsContext } from "../SegmentContext";
 import { AddIcon, ChevronLeftIcon, CloseIcon } from "@chakra-ui/icons";
-import './Menu.css';
+import "./Menu.css";
+import ColorSwatch from "./ColourSwatch";
 
 const Menu = () => {
   const { segments, setSegments } = useContext(SegmentsContext);
@@ -24,7 +27,14 @@ const Menu = () => {
 
   return (
     <>
-      <IconButton size='sm' id='menu-button' icon={<ChevronLeftIcon />} ref={btnRef} colorScheme="teal" onClick={onOpen} />
+      <IconButton
+        size="sm"
+        id="menu-button"
+        icon={<ChevronLeftIcon />}
+        ref={btnRef}
+        colorScheme="teal"
+        onClick={onOpen}
+      />
       <Drawer
         isOpen={isOpen}
         placement="right"
@@ -35,8 +45,9 @@ const Menu = () => {
         <DrawerOverlay />
         <DrawerContent>
           <DrawerCloseButton />
-          <DrawerHeader><h1>Wheel Segments</h1></DrawerHeader>
-
+          <DrawerHeader>
+            <h1>Wheel Segments</h1>
+          </DrawerHeader>
           <DrawerBody>
             <Stack spacing={2}>
               {segments.map((segment, index) => (
@@ -46,11 +57,26 @@ const Menu = () => {
                     placeholder={`Segment ${index + 1}`}
                     value={segment.name}
                     onChange={(e) => {
-                      const newSegments = [...segments];
+                      let newSegments = [...segments];
                       newSegments[index].name = e.target.value;
                       setSegments(newSegments);
                     }}
                   />
+                  <Select
+                    placeholder="Select colour"
+                    value={segment.color}
+                    onChange={(e) => {
+                      let newSegments = [...segments];
+                      newSegments[index].color = e.target.value;
+                      setSegments(newSegments);
+                    }}
+                  >
+                    {colorPalette.map((color, colorIndex) => (
+                      <option key={colorIndex} value={color}>
+                        {color}
+                      </option>
+                    ))}
+                  </Select>
                   {segments.length > 4 && (
                     <InputRightElement
                       children={
@@ -74,7 +100,7 @@ const Menu = () => {
                     newSegments.push({
                       name: "New Segment",
                       color:
-                        colorPalette[(segments.length) % colorPalette.length],
+                        colorPalette[segments.length % colorPalette.length],
                     });
                     setSegments(newSegments);
                   }}

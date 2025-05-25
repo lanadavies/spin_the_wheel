@@ -8,6 +8,7 @@ const SpinnerWheel = () => {
   const [confetti, setConfetti] = useState(false);
   const { segments } = useContext(SegmentsContext);
   const [rotation, setRotation] = useState(getStartRotation());
+  const [spinning, setSpinning] = useState(false);
 
   function getStartRotation() {
     const degreesPerItem = 360 / segments.length;
@@ -26,12 +27,14 @@ const SpinnerWheel = () => {
   }, [confetti]);
 
   const spinWheel = () => {
+    setSpinning(true);
     const num = rotation - Math.floor(Math.random() * 360) - 720;
     setRotation(num); // Ensure at least two full rotations
     // const degreesPerItem = 360 / segments.length;
 
     setTimeout(() => {
       setConfetti(true);
+      setSpinning(false);
     }, ROTATION_SPEED * 1000);
   };
 
@@ -55,7 +58,7 @@ const SpinnerWheel = () => {
           className="wheel"
           style={{
             transform: `rotate(${rotation}deg)`,
-            transition: `transform ${ROTATION_SPEED}s ease-out`,
+            transition: spinning ? `transform ${ROTATION_SPEED}s ease-out` : "none",
           }}
         >
           {segments.map((item, index) => (
