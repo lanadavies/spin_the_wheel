@@ -14,7 +14,7 @@ import {
 } from "@chakra-ui/react";
 import { useContext, useRef } from "react";
 import { colorPalette, SegmentsContext } from "../SegmentContext";
-import { AddIcon, CloseIcon } from "@chakra-ui/icons";
+import { AddIcon, ChevronLeftIcon, CloseIcon } from "@chakra-ui/icons";
 import './Menu.css';
 
 const Menu = () => {
@@ -24,17 +24,18 @@ const Menu = () => {
 
   return (
     <>
-      <IconButton size='sm' id='menu-button' icon={<AddIcon />} ref={btnRef} colorScheme="teal" onClick={onOpen} />
+      <IconButton size='sm' id='menu-button' icon={<ChevronLeftIcon />} ref={btnRef} colorScheme="teal" onClick={onOpen} />
       <Drawer
         isOpen={isOpen}
         placement="right"
+        size="lg"
         onClose={onClose}
         finalFocusRef={btnRef}
       >
         <DrawerOverlay />
         <DrawerContent>
           <DrawerCloseButton />
-          <DrawerHeader>Wheel Segments</DrawerHeader>
+          <DrawerHeader><h1>Wheel Segments</h1></DrawerHeader>
 
           <DrawerBody>
             <Stack spacing={2}>

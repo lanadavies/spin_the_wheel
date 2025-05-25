@@ -5,7 +5,6 @@ import { colorPalette, SegmentsContext } from "../SegmentContext";
 
 const SpinnerWheel = () => {
   const ROTATION_SPEED = 4; // seconds for the wheel to spin
-  const [selectedItem, setSelectedItem] = useState(null);
   const [confetti, setConfetti] = useState(false);
   const { segments } = useContext(SegmentsContext);
   const [rotation, setRotation] = useState(getStartRotation());
@@ -29,17 +28,9 @@ const SpinnerWheel = () => {
   const spinWheel = () => {
     const num = rotation - Math.floor(Math.random() * 360) - 720;
     setRotation(num); // Ensure at least two full rotations
-    const degreesPerItem = 360 / segments.length;
-    // console.log(
-    //   Math.floor((rotation - getStartRotation()) / degreesPerItem) %
-    //     segments.length
-    // );
+    // const degreesPerItem = 360 / segments.length;
+
     setTimeout(() => {
-      //   const degreesPerItem = 360 / segments.length;
-      //   setSelectedItem(
-      //     Math.floor((Math.abs(rotation) - getStartRotation()) / degreesPerItem) %
-      //       segments.length
-      //   );
       setConfetti(true);
     }, ROTATION_SPEED * 1000);
   };
@@ -82,7 +73,6 @@ const SpinnerWheel = () => {
           ))}
         </div>
       </div>
-      {selectedItem && <p>You won: {segments[selectedItem].name}</p>}
     </>
   );
 };
