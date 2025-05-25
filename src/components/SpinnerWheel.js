@@ -1,33 +1,23 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import "./SpinnerWheel.css";
 import Confetti from "react-confetti-boom";
-
-const colorPalette = ["#f7abcf", "#f7d1ab", "#c2afdc", "#6988db"];
+import { colorPalette, SegmentsContext } from "../SegmentContext";
 
 const SpinnerWheel = () => {
   const ROTATION_SPEED = 4; // seconds for the wheel to spin
   const [selectedItem, setSelectedItem] = useState(null);
   const [confetti, setConfetti] = useState(false);
-  const [items, setItems] = useState([
-    { name: "Item 1", color: colorPalette[0] },
-    { name: "Item 2", color: colorPalette[1] },
-    { name: "Item 3", color: colorPalette[2] },
-    { name: "Item 4", color: colorPalette[3] },
-    { name: "Item 5", color: colorPalette[0] },
-    { name: "Item 6", color: colorPalette[1] },
-    { name: "Item 7", color: colorPalette[2] },
-    { name: "Item 8", color: colorPalette[3] },
-  ]);
+  const { segments, setSegments } = useContext(SegmentsContext);
   const [rotation, setRotation] = useState(getStartRotation());
 
   function getStartRotation() {
-    const degreesPerItem = 360 / items.length;
+    const degreesPerItem = 360 / segments.length;
     return 45 + degreesPerItem / 2;
   }
 
   useEffect(() => {
     setRotation(getStartRotation()); // Start at the first item
-  }, [items]);
+  }, [segments]);
 
   useEffect(() => {
     if (!confetti) return;
@@ -39,16 +29,16 @@ const SpinnerWheel = () => {
   const spinWheel = () => {
     const num = rotation - Math.floor(Math.random() * 360) - 720;
     setRotation(num); // Ensure at least two full rotations
-    const degreesPerItem = 360 / items.length;
+    const degreesPerItem = 360 / segments.length;
     // console.log(
     //   Math.floor((rotation - getStartRotation()) / degreesPerItem) %
-    //     items.length
+    //     segments.length
     // );
     setTimeout(() => {
-      //   const degreesPerItem = 360 / items.length;
+      //   const degreesPerItem = 360 / segments.length;
       //   setSelectedItem(
       //     Math.floor((Math.abs(rotation) - getStartRotation()) / degreesPerItem) %
-      //       items.length
+      //       segments.length
       //   );
       setConfetti(true);
     }, ROTATION_SPEED * 1000);
@@ -60,7 +50,7 @@ const SpinnerWheel = () => {
 
   // Function to calculate the angle for the polygon clipPath
   function getPolygonAngle() {
-    return (1 - Math.tan(toRadians(45 - 180 / items.length))) * 100;
+    return (1 - Math.tan(toRadians(45 - 180 / segments.length))) * 100;
   }
 
   return (
@@ -77,13 +67,13 @@ const SpinnerWheel = () => {
             transition: `transform ${ROTATION_SPEED}s ease-out`,
           }}
         >
-          {items.map((item, index) => (
+          {segments.map((item, index) => (
             <div
               key={index}
               className="wheel-segment"
               style={{
                 backgroundColor: item.color,
-                transform: `rotate(${(360 / items.length) * index}deg)`,
+                transform: `rotate(${(360 / segments.length) * index}deg)`,
                 clipPath: `polygon(0 0, ${getPolygonAngle()}% 0, 100% 100%, 0 ${getPolygonAngle()}%)`, //`polygon(0 0, 100% 0, 100% 100%, 0 100%)`
               }}
             >
@@ -92,7 +82,7 @@ const SpinnerWheel = () => {
           ))}
         </div>
       </div>
-      {selectedItem && <p>You won: {items[selectedItem].name}</p>}
+      {selectedItem && <p>You won: {segments[selectedItem].name}</p>}
     </>
   );
 };
