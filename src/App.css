@@ -10,12 +10,12 @@
 }
 
 body {
-  font-family: "Lora", serif;
+  font-family: "Lora", serif !important;
   font-optical-sizing: auto;
   background-color: #f7f0e6 !important;
+  font-size: 0.9rem;
 }
 
 button {
   font-family: "Lora", serif;
-  font-weight: 700;
 }
