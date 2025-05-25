@@ -1,5 +1,4 @@
 import {
-  Badge,
   Drawer,
   DrawerBody,
   DrawerCloseButton,
@@ -9,7 +8,6 @@ import {
   IconButton,
   Input,
   InputGroup,
-  InputRightElement,
   Select,
   Stack,
   useDisclosure,
@@ -18,7 +16,6 @@ import { useContext, useRef } from "react";
 import { colorPalette, SegmentsContext } from "../SegmentContext";
 import { AddIcon, ChevronLeftIcon, CloseIcon } from "@chakra-ui/icons";
 import "./Menu.css";
-import ColorSwatch from "./ColourSwatch";
 
 const Menu = () => {
   const { segments, setSegments } = useContext(SegmentsContext);
@@ -28,7 +25,7 @@ const Menu = () => {
   return (
     <>
       <IconButton
-        size="sm"
+        // size="sm"
         id="menu-button"
         icon={<ChevronLeftIcon />}
         ref={btnRef}
@@ -78,18 +75,14 @@ const Menu = () => {
                     ))}
                   </Select>
                   {segments.length > 4 && (
-                    <InputRightElement
-                      children={
-                        <CloseIcon
-                          style={{ cursor: "pointer", fontSize: "0.7em" }}
-                          onClick={() => {
-                            const newSegments = [...segments];
-                            newSegments.splice(index, 1);
-                            setSegments(newSegments);
-                          }}
-                        />
-                      }
-                    />
+                    <IconButton
+                            onClick={() => {
+                              const newSegments = [...segments];
+                              newSegments.splice(index, 1);
+                              setSegments(newSegments);
+                            }}
+                      icon={<CloseIcon />}
+                      />
                   )}
                 </InputGroup>
               ))}
