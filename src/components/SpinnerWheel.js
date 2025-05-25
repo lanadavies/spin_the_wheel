@@ -43,7 +43,7 @@ const SpinnerWheel = () => {
               clipPath: `polygon(0 0, ${getPolygonAngle()}% 0, 100% 100%, 0 ${getPolygonAngle()}%)`, //`polygon(0 0, 100% 0, 100% 100%, 0 100%)`
             }}
           >
-            {item.name}
+            <span>{item.name}</span>
           </div>
         ))}
       </div>

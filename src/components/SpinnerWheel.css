@@ -56,4 +56,36 @@
     height: 50%;
     background-color: #f0f0f0;
     transform-origin: bottom right;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    user-select: none;
+}
+
+.spinner-container .wheel .wheel-segment{
+    position: absolute;
+    width: 50%;
+    height: 50%;
+    background-color: #f0f0f0;
+    transform-origin: bottom right;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    user-select: none;
+}
+
+.spinner-container .wheel .wheel-segment span {
+    position: relative;
+    transform: rotate(45deg);
+    font-size: 1.5rem;
+    color: white;
+    font-weight: 600;
+    text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.2);
+}
+
+.spinner-container .wheel .wheel-segment span::after {
+    content: '';
+    position: absolute;
+    font-size: 0.75em;
+    font-weight: 500;
 }
