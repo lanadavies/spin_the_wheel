@@ -2,6 +2,7 @@ import "./App.css";
 import SpinnerWheel from "./components/SpinnerWheel";
 import { ChakraProvider } from "@chakra-ui/react";
 import { SegmentsProvider } from "./SegmentContext";
+import Menu from "./components/Menu";
 
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
       <ChakraProvider>
         <SegmentsProvider>
           <SpinnerWheel />
+          <Menu />
         </SegmentsProvider>
       </ChakraProvider>
     </div>

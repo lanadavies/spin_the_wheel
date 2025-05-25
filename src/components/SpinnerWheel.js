@@ -7,7 +7,7 @@ const SpinnerWheel = () => {
   const ROTATION_SPEED = 4; // seconds for the wheel to spin
   const [selectedItem, setSelectedItem] = useState(null);
   const [confetti, setConfetti] = useState(false);
-  const { segments, setSegments } = useContext(SegmentsContext);
+  const { segments } = useContext(SegmentsContext);
   const [rotation, setRotation] = useState(getStartRotation());
 
   function getStartRotation() {
