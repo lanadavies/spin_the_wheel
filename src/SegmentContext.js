@@ -1,16 +1,12 @@
 import { createContext, useState } from "react";
 
-export const colorPalette = ["#f7abcf", "#f7d1ab", "#c2afdc", "#6988db"];
+export const colorPalette = ["#f7abcf", "#f7d1ab", "#c2afdc", "#98b0f2", '#94d1c3'];
 
 const defaultSegments = [
   { name: "Item 1", color: colorPalette[0] },
   { name: "Item 2", color: colorPalette[1] },
   { name: "Item 3", color: colorPalette[2] },
   { name: "Item 4", color: colorPalette[3] },
-  { name: "Item 5", color: colorPalette[0] },
-  { name: "Item 6", color: colorPalette[1] },
-  { name: "Item 7", color: colorPalette[2] },
-  { name: "Item 8", color: colorPalette[3] },
 ];
 
 export const SegmentsContext = createContext();

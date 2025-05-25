@@ -15,7 +15,7 @@ import {
   useDisclosure,
 } from "@chakra-ui/react";
 import { useContext, useRef } from "react";
-import { SegmentsContext } from "../SegmentContext";
+import { colorPalette, SegmentsContext } from "../SegmentContext";
 import { AddIcon, CloseIcon } from "@chakra-ui/icons";
 
 const Menu = () => {
@@ -57,7 +57,7 @@ const Menu = () => {
                     <InputRightElement
                       children={
                         <CloseIcon
-                          style={{ cursor: "pointer" }}
+                          style={{ cursor: "pointer", fontSize: "0.7em" }}
                           onClick={() => {
                             const newSegments = [...segments];
                             newSegments.splice(index, 1);
@@ -69,15 +69,22 @@ const Menu = () => {
                   )}
                 </InputGroup>
               ))}
+              <div>
+                <IconButton
+                  colorScheme="teal"
+                  onClick={() => {
+                    const newSegments = [...segments];
+                    newSegments.push({
+                      name: "New Segment",
+                      color:
+                        colorPalette[(segments.length) % colorPalette.length],
+                    });
+                    setSegments(newSegments);
+                  }}
+                  icon={<AddIcon />}
+                />
+              </div>
             </Stack>
-            <IconButton
-              onClick={() => {
-                const newSegments = [...segments];
-                newSegments.push({ name: "New Segment", color: "#f7abcf" }); // Default color
-                setSegments(newSegments);
-              }}
-              icon={<AddIcon />}
-            />
           </DrawerBody>
         </DrawerContent>
       </Drawer>
