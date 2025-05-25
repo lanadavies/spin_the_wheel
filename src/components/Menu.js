@@ -25,9 +25,9 @@ const Menu = () => {
 
   return (
     <>
-      <Button ref={btnRef} colorScheme="teal" onClick={onOpen}>
+      {/* <Button ref={btnRef} colorScheme="teal" onClick={onOpen}>
         Open
-      </Button>
+      </Button> */}
       <Drawer
         isOpen={isOpen}
         placement="right"
