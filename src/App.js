@@ -2,7 +2,7 @@ import "./App.css";
 import SpinnerWheel from "./components/SpinnerWheel";
 import { ChakraProvider } from "@chakra-ui/react";
 import { SegmentsProvider } from "./SegmentContext";
-import Menu from "./components/Menu";
+import Editor from "./components/Editor";
 import Header from "./components/Header";
 
 function App() {
@@ -22,7 +22,7 @@ function App() {
         >
           <SpinnerWheel />
         </div>
-        <Menu />
+        <Editor />
       </SegmentsProvider>
     </ChakraProvider>
   );

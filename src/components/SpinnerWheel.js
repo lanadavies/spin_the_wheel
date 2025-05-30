@@ -3,8 +3,10 @@ import "./SpinnerWheel.css";
 import Confetti from "react-confetti-boom";
 import { colorPalette, SegmentsContext } from "../SegmentContext";
 
+const ROTATION_SPEED = 5; // seconds for the wheel to spin
+const REVOLUTIONS = 10; // revolutions for the wheel to spin
+
 const SpinnerWheel = () => {
-  const ROTATION_SPEED = 4; // seconds for the wheel to spin
   const [confetti, setConfetti] = useState(false);
   const { segments } = useContext(SegmentsContext);
   const [rotation, setRotation] = useState(getStartRotation());
@@ -28,7 +30,7 @@ const SpinnerWheel = () => {
 
   const spinWheel = () => {
     setSpinning(true);
-    const num = rotation - Math.floor(Math.random() * 360) - 720;
+    const num = rotation - Math.floor(Math.random() * 360) - (REVOLUTIONS * 360);
     setRotation(num); // Ensure at least two full rotations
     // const degreesPerItem = 360 / segments.length;
 

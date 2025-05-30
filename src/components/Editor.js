@@ -15,9 +15,9 @@ import {
 import { useContext, useRef } from "react";
 import { colorPalette, SegmentsContext } from "../SegmentContext";
 import { AddIcon, ChevronLeftIcon, CloseIcon } from "@chakra-ui/icons";
-import "./Menu.css";
+import "./Editor.css";
 
-const Menu = () => {
+const Editor = () => {
   const { segments, setSegments } = useContext(SegmentsContext);
   const { isOpen, onOpen, onClose } = useDisclosure();
   const btnRef = useRef();
@@ -26,7 +26,7 @@ const Menu = () => {
     <>
       <IconButton
         // size="sm"
-        id="menu-button"
+        id="Editor-button"
         icon={<ChevronLeftIcon />}
         ref={btnRef}
         colorScheme="teal"
@@ -61,6 +61,7 @@ const Menu = () => {
                   />
                   <Select
                     placeholder="Select colour"
+                    style={{backgroundColor: segment.color}}
                     value={segment.color}
                     onChange={(e) => {
                       let newSegments = [...segments];
@@ -69,20 +70,20 @@ const Menu = () => {
                     }}
                   >
                     {colorPalette.map((color, colorIndex) => (
-                      <option key={colorIndex} value={color}>
+                      <option style={{backgroundColor: color}} key={colorIndex} value={color}>
                         {color}
                       </option>
                     ))}
                   </Select>
                   {segments.length > 4 && (
                     <IconButton
-                            onClick={() => {
-                              const newSegments = [...segments];
-                              newSegments.splice(index, 1);
-                              setSegments(newSegments);
-                            }}
+                      onClick={() => {
+                        const newSegments = [...segments];
+                        newSegments.splice(index, 1);
+                        setSegments(newSegments);
+                      }}
                       icon={<CloseIcon />}
-                      />
+                    />
                   )}
                 </InputGroup>
               ))}
@@ -108,4 +109,4 @@ const Menu = () => {
   );
 };
 
-export default Menu;
+export default Editor;
