@@ -92,7 +92,7 @@ const Editor = () => {
                   onClick={() => {
                     const newSegments = [...segments];
                     newSegments.push({
-                      name: "New Segment",
+                      name: "New Genre",
                       color:
                         colorPalette[segments.length % colorPalette.length],
                     });
